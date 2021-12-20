@@ -48,9 +48,9 @@ jobs:
           stack_file_name: docker-compose.yaml
           script: |
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/workflow:latest
-            sudo docker-compose down -v
+            sudo docker-compose stop
             sudo docker-compose rm web
-            sudo docker-compose up -d --build
+            sudo docker-compose up -d
 
   send_message:
     runs-on: ubuntu-latest
