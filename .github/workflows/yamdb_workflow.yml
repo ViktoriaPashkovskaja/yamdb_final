@@ -14,7 +14,7 @@ jobs:
     - run: pytest
     - run: flake8 . --exclude tests,api/migrations,api_yamdb/settings.py,api_yamdb/urls.py,api,posts,users,venv
 
-  build_and_push_to_docker_hub:
+  build:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: tests
@@ -35,8 +35,8 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
 
   deploy:
-    env:
-      PROJECT_ROOT: ~/code
+    #env:
+      #PROJECT_ROOT: ~/code
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/master'
@@ -49,7 +49,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          target: ${{ env.PROJECT_ROOT }}
+          #target: ${{ env.PROJECT_ROOT }}
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -57,7 +57,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ${{ env.PROJECT_ROOT }}
+          #cd ${{ env.PROJECT_ROOT }}
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/workflow:latest
             sudo docker-compose stop
             sudo docker-compose rm web
