@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}YaMDb | Отзывы{% endblock %}
+{% block header %}Последние отзывы{% endblock %}
+{% block content %}
+{% load cache %}
+{% cache 20 index_page %}
+
+<div class="container">
+
+  {% for review in page %}
+  {% include "reviews/card_review.html" %}
+  {% endfor %}
+
+</div>
+
+{% endcache %}
+{% endblock %}
