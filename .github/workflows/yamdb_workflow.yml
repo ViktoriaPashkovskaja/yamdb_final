@@ -47,9 +47,8 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          stack_file_name: docker-compose.yaml
           script: |
-            sudo docker pull viksan29/yamdb_final
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_final
             sudo docker-compose stop
             sudo docker-compose rm web
             sudo docker-compose up -d
