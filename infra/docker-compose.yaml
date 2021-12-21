@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    image: viksan29/workflow
+    image: viksan29/yamdb_final
     restart: always
     volumes:
       - static_value:/app/static/
