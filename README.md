@@ -20,5 +20,5 @@ Cобирает отзывы пользователей на произведе�
 ###Информация по запросам 
 Запустите сервер. Перейдите на http://localhost:8000/redoc/
 
-![example workflow] ![example workflow] https://github.com/ViktoriaPashkovskaja/yamdb_final/workflows/yamdb_final/badge.svg 
+![example workflow]https://github.com/ViktoriaPashkovskaja/yamdb_final/workflows/yamdb_final/badge.svg 
 ###На боевом сервере http://51.250.27.153/redoc/
